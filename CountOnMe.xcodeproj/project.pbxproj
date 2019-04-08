@@ -76,10 +76,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C926DAD01D7581BB00477020 = {
+		3ABA9186225BB19400FF98B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3ABA9187225BB1A200FF98B7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3ABA9188225BB1A700FF98B7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C926DADE1D7581BB00477020 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3ABA9189225BB1BA00FF98B7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3ABA918B225BB1E600FF98B7 /* CountOnMe */,
+				C926DADC1D7581BB00477020 /* AppDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3ABA918A225BB1C600FF98B7 /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
 				C9DA15091DF08CF100B0974D /* Default-568h@2x.png */,
+				C926DAE01D7581BB00477020 /* Main.storyboard */,
+				C926DAE51D7581BB00477020 /* LaunchScreen.storyboard */,
+			);
+			path = Ressources;
+			sourceTree = "<group>";
+		};
+		3ABA918B225BB1E600FF98B7 /* CountOnMe */ = {
+			isa = PBXGroup;
+			children = (
+				C926DAE81D7581BB00477020 /* Info.plist */,
+			);
+			path = CountOnMe;
+			sourceTree = "<group>";
+		};
+		C926DAD01D7581BB00477020 = {
+			isa = PBXGroup;
+			children = (
 				C926DADB1D7581BB00477020 /* CountOnMe */,
 				C926DAF01D7581BB00477020 /* CountOnMeTests */,
 				C926DAFB1D7581BB00477020 /* CountOnMeUITests */,
@@ -100,12 +148,12 @@
 		C926DADB1D7581BB00477020 /* CountOnMe */ = {
 			isa = PBXGroup;
 			children = (
-				C926DADC1D7581BB00477020 /* AppDelegate.swift */,
-				C926DADE1D7581BB00477020 /* ViewController.swift */,
-				C926DAE01D7581BB00477020 /* Main.storyboard */,
+				3ABA9186225BB19400FF98B7 /* Model */,
+				3ABA9187225BB1A200FF98B7 /* View */,
+				3ABA9188225BB1A700FF98B7 /* Controller */,
+				3ABA918A225BB1C600FF98B7 /* Ressources */,
+				3ABA9189225BB1BA00FF98B7 /* Supporting Files */,
 				C926DAE31D7581BB00477020 /* Assets.xcassets */,
-				C926DAE51D7581BB00477020 /* LaunchScreen.storyboard */,
-				C926DAE81D7581BB00477020 /* Info.plist */,
 			);
 			name = CountOnMe;
 			path = "Zozor+";
@@ -416,7 +464,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Zozor+/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Zozor+/Supporting Files/CountOnMe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ambroisecollon.CountOnMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -429,7 +477,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Zozor+/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Zozor+/Supporting Files/CountOnMe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ambroisecollon.CountOnMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
