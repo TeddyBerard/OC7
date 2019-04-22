@@ -24,5 +24,10 @@ class Const {
         static let ok: String = "OK"
     }
     
+    class TitleButton {
+        static let removeMemorise = "MC"
+        static let saveMemorise = "MR"
+    }
+    
     
 }

@@ -22,6 +22,7 @@ class Calculator {
     var stringNumbers: [String] = [String()]
     var operators: [String] = ["+"]
     var index = 0
+    var memorise: String?
     
     // MARK: - Initialization
     
@@ -33,7 +34,7 @@ class Calculator {
     /// Calcul the total
     ///
     /// - Returns: return the total value of calcul
-    func calculateTotal() -> Int {
+    func calculateTotal(isMemorise: Bool = false) -> Int {
         var total = 0
         for (i, stringNumber) in stringNumbers.enumerated() {
             if let number = Int(stringNumber) {
@@ -45,6 +46,9 @@ class Calculator {
             }
         }
         
+        if isMemorise {
+            self.memorise = String(total)
+        }
         clear()
         return total
     }
@@ -100,6 +104,18 @@ class Calculator {
         stringNumbers = [String()]
         operators = ["+"]
         index = 0
+    }
+    
+    // Reset memorise
+    func resetMemorise() {
+        memorise = nil
+    }
+    
+    func addMemorise() {
+        guard let memorise = self.memorise,
+            let number = Int(memorise) else { return }
+        
+        addNewNumber(number)
     }
     
     /// Detect if the expression is correct

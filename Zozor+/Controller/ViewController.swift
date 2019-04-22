@@ -18,7 +18,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
-
+    @IBOutlet weak var memoriseButton: UIButton!
+    
     // MARK: - Initialization
     
     override func viewDidLoad() {
@@ -46,10 +47,35 @@ class ViewController: UIViewController {
     }
 
     @IBAction func equal() {
+        displayResult()
+    }
+    
+    @IBAction func memorise(_ sender: Any) {
+        if calculator.memorise == nil {
+            displayResult(isMemorise: true)
+        } else {
+            calculator.resetMemorise()
+            memoriseButton.setTitle(Const.TitleButton.saveMemorise, for: .normal)
+        }
+    }
+    
+    
+    @IBAction func writeMemorise(_ sender: Any) {
+        calculator.addMemorise()
+    }
+    
+    // MARK: - Utils
+    
+    func displayResult(isMemorise: Bool = false) {
         guard calculator.isExpressionCorrect() else { return }
         
-        textView.text += "=\(calculator.calculateTotal())"
+        if isMemorise {
+            memoriseButton.setTitle(Const.TitleButton.removeMemorise, for: .normal)
+        }
+        
+        textView.text += "=\(calculator.calculateTotal(isMemorise: isMemorise))"
     }
+    
 }
 
 extension ViewController: CalculatorProtocol {
