@@ -11,26 +11,80 @@ import XCTest
 
 class Zozor_Tests: XCTestCase {
     
+    var calculator: Calculator!
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        calculator = Calculator()
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func rand() -> Int {
+        return Int.random(in: 1..<100)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testCalculTotal() {
+        calculator.stringNumbers = ["20", "4", "5", "2"]
+        calculator.operators = ["+", "+", "+", "-"]
+        
+        XCTAssertEqual(calculator.calculateTotal(), 27)
     }
     
+    func testMemorise() {
+        calculator.stringNumbers = ["20", "4", "5", "2"]
+        calculator.operators = ["+", "+", "+", "-"]
+        
+        let _ = calculator.calculateTotal(isMemorise: true)
+        
+        XCTAssertEqual(calculator.memorise, "27")
+    }
+    
+    func testResetMemorise() {
+        testMemorise()
+        
+        calculator.resetMemorise()
+        XCTAssertEqual(calculator.memorise, nil)
+    }
+    
+    func testAddNewNumber() {
+        let rand = self.rand()
+        
+        calculator.addNewNumber(rand)
+        
+        XCTAssertEqual(calculator.stringNumbers.last, String(rand))
+    }
+    
+    func testAddPlus() {
+        testAddNewNumber()
+        calculator.operators = []
+        
+        calculator.addPlus()
+        XCTAssertEqual(calculator.operators.last, "+")
+    }
+    
+    func testAddMinus() {
+        testAddNewNumber()
+        calculator.operators = []
+        
+        calculator.addMinus()
+        XCTAssertEqual(calculator.operators.last, "-")
+    }
+    
+    func testStartNewCalcul() {
+        XCTAssertEqual(calculator.isExpressionCorrect(), false)
+    }
+    
+    func testEnterCorrectCalcul() {
+        calculator.stringNumbers = ["5", ""]
+        XCTAssertEqual(calculator.isExpressionCorrect(), false)
+    }
+    
+    func testCanAddOperator() {
+        calculator.operators = ["-", "-", "+"]
+        
+        XCTAssertEqual(calculator.canAddOperator(), false)
+    }
 }
