@@ -52,7 +52,12 @@ class ViewController: UIViewController {
     
     @IBAction func memorise(_ sender: Any) {
         if calculator.memorise == nil {
-            displayResult(isMemorise: true)
+            calculator.saveMemorise()
+            
+            if let memorise = calculator.memorise,
+                !memorise.isEmpty {
+                memoriseButton.setTitle(Const.TitleButton.removeMemorise, for: .normal)
+            }
         } else {
             calculator.resetMemorise()
             memoriseButton.setTitle(Const.TitleButton.saveMemorise, for: .normal)
@@ -66,14 +71,10 @@ class ViewController: UIViewController {
     
     // MARK: - Utils
     
-    func displayResult(isMemorise: Bool = false) {
+    func displayResult() {
         guard calculator.isExpressionCorrect() else { return }
         
-        if isMemorise {
-            memoriseButton.setTitle(Const.TitleButton.removeMemorise, for: .normal)
-        }
-        
-        textView.text += "=\(calculator.calculateTotal(isMemorise: isMemorise))"
+        textView.text += "=\(calculator.calculateTotal())"
     }
     
 }

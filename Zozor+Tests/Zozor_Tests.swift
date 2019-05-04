@@ -37,7 +37,8 @@ class Zozor_Tests: XCTestCase {
         calculator.stringNumbers = ["20", "4", "5", "2"]
         calculator.operators = ["+", "+", "+", "-"]
         
-        let _ = calculator.calculateTotal(isMemorise: true)
+        let _ = calculator.calculateTotal()
+        calculator.saveMemorise()
         
         XCTAssertEqual(calculator.memorise, "27")
     }
