@@ -31,7 +31,6 @@ class Calculator {
     
     // MARK: - Method
     
-    
     /// Calcul the total
     ///
     /// - Returns: return the total value of calcul

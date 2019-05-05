@@ -88,4 +88,18 @@ class Zozor_Tests: XCTestCase {
         
         XCTAssertEqual(calculator.canAddOperator(), false)
     }
+    
+    func testAddMemorise() {
+        testMemorise()
+        calculator.addMemorise()
+        
+        XCTAssertEqual(calculator.stringNumbers.last, "27")
+    }
+    
+    func testGetDisplay() {
+        calculator.stringNumbers = ["20", "4", "5", "2"]
+        calculator.operators = ["+", "+", "+", "-"]
+        
+        XCTAssertEqual(calculator.getDisplay(), "20+4+5-2")
+    }
 }
