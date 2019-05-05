@@ -26,7 +26,7 @@ class Const {
     
     class TitleButton {
         static let removeMemorise = "MC"
-        static let saveMemorise = "MR"
+        static let saveMemorise = "M"
     }
     
     
