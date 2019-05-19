@@ -9,9 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+
     // MARK: - Property
-    
+
     var calculator: Calculator = Calculator()
 
     // MARK: - Outlets
@@ -19,15 +19,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
     @IBOutlet weak var memoriseButton: UIButton!
-    
+
     // MARK: - Initialization
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         calculator.calculatorDelegate = self
     }
-    
+
     // MARK: - Action
 
     @IBAction func tappedNumberButton(_ sender: UIButton) {
@@ -49,11 +49,11 @@ class ViewController: UIViewController {
     @IBAction func equal() {
         displayResult()
     }
-    
+
     @IBAction func memorise(_ sender: Any) {
         if calculator.memorise == nil {
             calculator.saveMemorise()
-            
+
             if let memorise = calculator.memorise,
                 !memorise.isEmpty {
                 memoriseButton.setTitle(Const.TitleButton.removeMemorise, for: .normal)
@@ -63,29 +63,28 @@ class ViewController: UIViewController {
             memoriseButton.setTitle(Const.TitleButton.saveMemorise, for: .normal)
         }
     }
-    
-    
+
     @IBAction func writeMemorise(_ sender: Any) {
         calculator.addMemorise()
     }
-    
+
     // MARK: - Utils
-    
+
     func displayResult() {
         guard calculator.isExpressionCorrect() else { return }
-        
+
         textView.text += "=\(calculator.calculateTotal())"
     }
-    
+
 }
 
 extension ViewController: CalculatorProtocol {
-    
+
     /// Update the textView with the Calculator calcul
     func updateDisplay() {
         textView.text = calculator.getDisplay()
     }
-    
+
     /// Display alert with specific parameters
     ///
     /// - Parameters:

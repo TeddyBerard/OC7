@@ -9,25 +9,24 @@
 import Foundation
 
 class Const {
-    
+
     class Title {
         static let zero: String = "Zéro!"
     }
-    
+
     class Message {
         static let startNewCalcul: String = "Démarrez un nouveau calcul !"
         static let enterCorrectCalcul: String = "Entrez une expression correcte !"
         static let wrongExpression: String = "Expression incorrecte !"
     }
-    
+
     class TitleAction {
         static let ok: String = "OK"
     }
-    
+
     class TitleButton {
         static let removeMemorise = "MC"
         static let saveMemorise = "M"
     }
-    
-    
+
 }

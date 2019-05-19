@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CalculatorProtocol: class {
-    
+
     func updateDisplay()
     func showAlert(title: String, message: String, titleAction: String)
 }
@@ -17,20 +17,20 @@ protocol CalculatorProtocol: class {
 class Calculator {
 
     // MARK: - Properties
-    
+
     weak var calculatorDelegate: CalculatorProtocol?
     var stringNumbers: [String] = [String()]
     var operators: [String] = ["+"]
     var index = 0
     var lastResult: String?
     var memorise: String?
-    
+
     // MARK: - Initialization
-    
+
     init() {}
-    
+
     // MARK: - Method
-    
+
     /// Calcul the total
     ///
     /// - Returns: return the total value of calcul
@@ -45,12 +45,12 @@ class Calculator {
                 }
             }
         }
-        
+
         lastResult = String(total)
         clear()
         return total
     }
-    
+
     /// Add number to stringNumber array
     ///
     /// - Parameter newNumber: number will be add to stringNumbers
@@ -62,7 +62,7 @@ class Calculator {
         }
         calculatorDelegate?.updateDisplay()
     }
-    
+
     /// Get the calcul and return this calcul
     ///
     /// - Returns: The calcul with operators and numbers
@@ -78,7 +78,7 @@ class Calculator {
         }
         return text
     }
-    
+
     /// Add + to the calcul
     func addPlus() {
         if canAddOperator() {
@@ -87,7 +87,7 @@ class Calculator {
             calculatorDelegate?.updateDisplay()
         }
     }
-    
+
     /// Add - to the calcul
     func addMinus() {
         if canAddOperator() {
@@ -96,33 +96,33 @@ class Calculator {
             calculatorDelegate?.updateDisplay()
         }
     }
-    
+
     /// clear the calcul
     func clear() {
         stringNumbers = [String()]
         operators = ["+"]
         index = 0
     }
-    
+
     /// Save last result on memorise
     func saveMemorise() {
         guard let lastTotal = lastResult else { return }
-        
+
         memorise = lastTotal
     }
-    
+
     // Reset memorise
     func resetMemorise() {
         memorise = nil
     }
-    
+
     func addMemorise() {
         guard let memorise = self.memorise,
             let number = Int(memorise) else { return }
-        
+
         addNewNumber(number)
     }
-    
+
     /// Detect if the expression is correct
     ///
     /// - Returns: true if the expression is correct otherwise false
@@ -139,7 +139,7 @@ class Calculator {
         }
         return true
     }
-    
+
     /// Detect if we can add operator to the calcul
     ///
     /// - Returns: return true if we can add operator otherwise false
